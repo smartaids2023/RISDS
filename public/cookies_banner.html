@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Policy</title>
+    <style>
+        /* Center the cookies banner */
+        .cookies-banner {
+            background-color: white; /* Change the background color of the banner to orange */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Style the buttons */
+        .cookies-banner button {
+            background-color: blue; /* Change the background color of the buttons to blue */
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        /* Style the anchor tag within the banner */
+        .cookies-banner a {
+            color: blue; /* Change the color of the anchor tag text to blue */
+        }
+
+        /* Style the anchor tag hover state */
+        .cookies-banner a:hover {
+            color: darkblue; /* Change the color of the anchor tag text on hover */
+        }
+
+        /* Footer styling */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f5f5f5; /* Light gray background color for the footer */
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main content -->
+    
+    <footer>
+        <div class="cookies-banner">
+            <p>This website uses cookies to improve your experience. By continuing to browse, you accept our use of cookies. <a href="cookie_policy.html">Learn more</a>.</p>
+            <button id="accept-cookies">Accept Cookies</button>
+            <button id="reject-cookies">Reject Cookies</button>
+        </div>
+    </footer>
+    
+    <script>
+        // Function to set a cookie
+        function setCookie(name, value, expiryDays) {
+            const date = new Date();
+            date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        // Handle accepting cookies
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            setCookie('cookies_accepted', 'true', 30); // Set cookie for 30 days
+            document.querySelector('.cookies-banner').style.display = 'none'; // Hide banner
+        });
+
+        // Handle rejecting cookies (optional)
+        document.getElementById('reject-cookies').addEventListener('click', () => {
+            alert('Some features might be limited without cookies.'); // Alert user about cookie rejection
+            document.querySelector('.cookies-banner').style.display = 'none'; // Hide banner
+        });
+    </script>
+</body>
+</html>
